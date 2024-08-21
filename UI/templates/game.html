@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scoreboard and Player Input</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="scoreboard">
+            <div>{{user_name}}</div>
+            <div> <span id="human-score">{{score_human}}</span>:<span id="transformer-score">{{score_transformer}}</span></div>
+            <div>  Transformer </div>
+        </div>
+        {% if is_game_end %}
+            <form action="/" method="get">
+                <div class="input-section">
+                    <button type="submit" name="restart_game">Play again</button>
+                </div>
+            </form>
+        {% endif %}
+        {% if is_round_finished == false %}
+            <form action="/game" method="post">
+                <div class="input-section">
+                    {% if guesser == "transformer" %}
+                    <h2>Enter a word for Transformer to guess</h2>
+                    {% elif guesser == "human" %}
+                    <h2>Guess the word: {{word_state}}</h2>
+                    <h4>Incorrect guess attempts remaining: {{n_guesses_remaining}}</h4>
+                    {% endif %}
+                    <input type="text" id="player-input" name="player-input" placeholder="{{input_placeholder}}" />
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        {% elif is_game_end == false %}
+            <form action="/game" method="post">
+                <div class="input-section">
+                    <button type="submit">Next Turn</button>
+                </div>
+            </form>
+        {% endif %}
+        {% if html_result == "IE" %}
+            <h2>Incorrect input</h2>
+        {% elif html_result == "AU" %}
+            <h2>You already used this word</h2>
+        {% elif html_result %}
+            <div class="solution-section">
+                <ul id="solution-list" class="solution-list">
+                    {% if is_letter_error%}
+                    <h2>You already used this letter</h2>
+                    {% endif %}
+                    {{ html_result | safe }}
+                </ul>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

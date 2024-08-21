@@ -1,0 +1,184 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+}
+
+.scoreboard {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.scoreboard div {
+    font-size: 24px;
+    flex: 1;
+    text-align: center;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+.input-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.input-section input {
+    width: 100%;
+    max-width: 500px;
+    padding: 10px;
+    font-size: 18px;
+    border: 2px solid #4CAF50;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.input-section button {
+    padding: 10px 20px;
+    font-size: 18px;
+    color: white;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.input-section button:hover {
+    background-color: #45a049;
+}
+
+.solution-section {
+    width: 100%;
+    max-height: 55vh; /* Set a maximum height for the steps section */
+    background-color: #ffffff;
+    border-top: 2px solid #4CAF50;
+    padding: 20px;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    overflow-y: auto; /* Enable vertical scrolling */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.solution-section h2 {
+    margin-top: 0;
+}
+
+.solution-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%; /* Ensure the list takes the full width of the container */
+}
+
+.solution-list li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.solution-list li:last-child {
+    border-bottom: none;
+}
+
+fieldset {
+    border: none;
+    margin: 20px 0;
+    padding: 0;
+}
+
+legend {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+label {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-left: 35px; /* Space for the custom radio button */
+    margin-bottom: 15px;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 24px;
+    user-select: none;
+}
+
+
+label input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.custom-radio {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    border: 2px solid #4CAF50;
+    background-color: #fff;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+label input:checked ~ .custom-radio {
+    background-color: #4CAF50;
+    border-color: #4CAF50;
+}
+
+.custom-radio::after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+label input:checked ~ .custom-radio::after {
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #fff;
+    top: 4px;
+    left: 4px;
+}
+
+h2 {
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+h4 {
+    margin-bottom: 3px;
+    margin-top: 3px;
+}
